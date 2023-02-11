@@ -3,18 +3,31 @@ import org.junit.jupiter.api.Test;
 
 public class ProductRepositoryTest {
 
-    Product product5 = new Book(5, "книга", 300, "Черное и белое", "Стендаль");
-    Product product6 = new Smartphone(6, "смартфон", 75000, "iphone", "Apple");
+    ProductRepository repository = new ProductRepository();
+    Product product1 = new Book(1, "книга", 300, "Война и мир", "Толстой");
+    Product product2 = new Smartphone(2, "смартфон", 75000, "iPhone 5", "Apple");
 
     @Test
     public void saveTest() {
-        ProductRepository repository = new ProductRepository();
 
-        repository.save(product5);
-        repository.save(product6);
+        repository.save(product1);
+        repository.save(product2);
 
-        Product[] expected = {product5, product6};
-        Product[] actual = repository.findAll();
+        Product[] expected = {product1, product2};
+        Product[] actual = repository.getProducts();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void removeTest() {
+
+        repository.save(product1);
+        repository.save(product2);
+        repository.removeById(1);
+
+        Product[] expected = {product2};
+        Product[] actual = repository.getProducts();
 
         Assertions.assertArrayEquals(expected, actual);
     }

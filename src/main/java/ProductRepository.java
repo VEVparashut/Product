@@ -1,9 +1,8 @@
+import java.nio.file.FileAlreadyExistsException;
+import java.rmi.AlreadyBoundException;
+
 public class ProductRepository {
     private Product[] products = new Product[0];
-
-    public Product[] findAll() {
-        return products;
-    }
 
     public void save(Product product) {
         Product[] tmp = new Product[products.length + 1];
@@ -12,6 +11,10 @@ public class ProductRepository {
         }
         tmp[tmp.length - 1] = product;
         products = tmp;
+    }
+
+    public Product[] getProducts() {
+        return products;
     }
 
     public void removeById(int ID) {
@@ -24,9 +27,5 @@ public class ProductRepository {
             }
         }
         products = tmp;
-    }
-
-    public Product[] getProducts() {
-        return products;
     }
 }
