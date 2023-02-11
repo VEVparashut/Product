@@ -55,7 +55,7 @@ public class ProductTest {
     public void shouldSetIDProduct() {
         Product product = new Product(66, "смартфон", 30000);
 
-        product.setID (66);
+        product.setID(66);
 
         int expected = 66;
         int actual = product.getID();
@@ -67,7 +67,7 @@ public class ProductTest {
     public void shouldSetNameProduct() {
         Product product = new Product(66, "смартфон", 30000);
 
-        product.setName ("смартфон");
+        product.setName("смартфон");
 
         String expected = "смартфон";
         String actual = product.getName();
@@ -79,7 +79,7 @@ public class ProductTest {
     public void shouldSetPriceProduct() {
         Product product = new Product(66, "смартфон", 30000);
 
-        product.setPrice (30000);
+        product.setPrice(30000);
 
         int expected = 30000;
         int actual = product.getPrice();
