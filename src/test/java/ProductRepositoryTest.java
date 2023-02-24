@@ -31,4 +31,15 @@ public class ProductRepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void removeNotFoundExceptionTest() {
+
+        repository.save(product1);
+        repository.save(product2);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repository.removeById(-20);
+        });
+    }
 }
